@@ -20,36 +20,6 @@ public class CoffeeOrderApp {
 
             //start the chosen task
             menu.startChosenTask(taskToDo);
-
-            /*
-            switch(taskToDo){
-
-
-                case 1:
-
-                    customerBasket.addToAmericano(new Americano("Americano", 30));
-                    break;
-                case 2:
-                    customerBasket.addToEspresso(new Espresso("Espresso", 20));
-                    break;
-                case 3:
-                    customerBasket.addToTea(new Tea("Green Tea", 15));
-                    break;
-                case 4:
-                    customerBasket.addToBaguette(new Baguette("Bagutte", 50));
-                    break;
-                case 5:
-                    customerBasket.addToCroissant(new Croissant("Croissant", 10));
-                    break;
-                case 6:
-                    statisticsMenu.printStatisticsChoice();
-                    break;
-                case 7:
-                    customerBasket.getTotalPrice();
-                    break;
-                default: break;
-
-             */
         }while(taskToDo != 9);
     }
 }

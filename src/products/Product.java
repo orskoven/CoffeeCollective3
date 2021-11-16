@@ -1,6 +1,6 @@
 package products;
 
-public class Product {
+public class Product{
     protected String title;
     protected int price;
 
@@ -16,6 +16,7 @@ public class Product {
     public int getPrice(){
         return this.price;
     }
+
 
     @Override
     public String toString() {
