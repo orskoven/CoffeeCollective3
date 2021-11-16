@@ -10,28 +10,30 @@ public class CoffeeTypeCounter {
     public static void oneAmericanoSold(){
        americanos++;
     }
+
     public static void oneEspressoSold(){
         espressos++;
     }
-    public static void oneTeaSold(){
-        teas++;
+    public static  void oneTeaSold(){
+       teas++;
     }
     public static void oneCroissantSold(){
-        teas++;
+        croissants++;
     }
     public static void oneBaguetteSold(){
-        teas++;
+        baguettes++;
     }
 
     public static int howManyCoffeesSold(){
-        return americanos + espressos + teas + croissants + baguettes;
+        return  americanos + espressos;
     }
 
     public static int howManyFoodsSold(){
-        return americanos + espressos + teas + croissants + baguettes;
+        return baguettes + croissants;
     }
 
     public static int howManySoldInTotal(){
-        return howManyCoffeesSold() + howManyCoffeesSold();
+        return howManyCoffeesSold()+howManyFoodsSold()+teas;
     }
+
 }

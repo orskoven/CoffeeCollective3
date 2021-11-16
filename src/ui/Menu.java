@@ -1,17 +1,44 @@
 package ui;
 
+import controllers.OrderController;
+
 import java.util.Scanner;
 
-public abstract class Menu {
+public class Menu {
+
+    StatisticsMenu statisticsMenu = new StatisticsMenu();
+    OrderController orderController = new OrderController();
     private Scanner sc = new Scanner(System.in);
 
-    public int receiveUserInput(){
-        int userInput = sc.nextInt();
+
+
+    public void welcomeUser(){
+        System.out.println("Hello and welcome. What would you like to order?");
+    }
+
+    public int getTaskToDo(){
+        printTaskOptions();
+        int userInput = Integer.parseInt(sc.nextLine());
         return userInput;
     }
 
-    public void welcomeUser(){
-        System.out.println("Hello and welcome");
-        System.out.println("What would you like to order?");
+    private void printTaskOptions(){
+        System.out.print("1. Add order, ");
+        System.out.print("2. Statistics, ");
+        System.out.println("9. Quit");
     }
+
+    public void startChosenTask(int taskToDo){
+        switch (taskToDo){
+            case 1:
+                orderController.addOrder();
+                break;
+            case 2:
+                statisticsMenu.printStatisticsChoice();
+                break;
+            default:break;
+        }
+    }
+
+
 }

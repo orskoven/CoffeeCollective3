@@ -1,14 +1,11 @@
 package products;
 
-public class Americano {
-    private String title = "Americano";
-    private int price = 15;
+import statistics.CoffeeTypeCounter;
 
-    public String getTitle() {
-        return title;
+public class Americano extends Product{
+    public Americano(String title, int price) {
+        super(title, price);
+        CoffeeTypeCounter.oneAmericanoSold();
     }
 
-    public int getPrice() {
-        return price;
-    }
 }

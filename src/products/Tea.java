@@ -1,14 +1,10 @@
 package products;
 
-public class Tea {
-    private String title = "Tea";
-    private int price = 60;
+import statistics.CoffeeTypeCounter;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public int getPrice() {
-        return price;
+public class Tea extends Product{
+    public Tea(String title, int price) {
+        super(title, price);
+        CoffeeTypeCounter.oneTeaSold();
     }
 }
