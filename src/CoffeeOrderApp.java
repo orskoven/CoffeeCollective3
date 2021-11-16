@@ -1,4 +1,6 @@
+import controllers.OrderController;
 import database.CustomerBasket;
+import database.ReadFiles;
 import ui.Menu;
 import ui.OrderTakingMenu;
 import ui.StatisticsMenu;
@@ -6,13 +8,15 @@ import ui.StatisticsMenu;
 public class CoffeeOrderApp {
     public static void main(String[] args) {
         Menu menu = new Menu();
-        OrderTakingMenu orderTakingMenu = new OrderTakingMenu();
-        StatisticsMenu statisticsMenu = new StatisticsMenu();
-        CustomerBasket customerBasket = new CustomerBasket();
+        ReadFiles readFiles = new ReadFiles();
+
+        // read the product.csv file and save information to TemporaryData >> productPrices file
+        readFiles.getProductPricesFromFile();
 
         // greet the user
         menu.welcomeUser();
 
+        //
         int taskToDo;
         do{
             // get user's choice of task
@@ -20,6 +24,7 @@ public class CoffeeOrderApp {
 
             //start the chosen task
             menu.startChosenTask(taskToDo);
-        }while(taskToDo != 9);
+
+        } while(taskToDo != 9);
     }
 }

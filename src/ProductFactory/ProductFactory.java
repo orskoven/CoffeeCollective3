@@ -1,5 +1,6 @@
 package ProductFactory;
 
+import database.TemporaryData;
 import products.*;
 
 public class ProductFactory implements ProductInterface {
@@ -26,8 +27,8 @@ public class ProductFactory implements ProductInterface {
     }
 
     private int getProductPrice(String productType){
-        int productPrice = 0;
-
+        int productPrice = TemporaryData.productPrices.get(productType);
+        System.out.println(productPrice);
         return productPrice;
     }
 }

@@ -2,6 +2,8 @@ package controllers;
 
 import ProductFactory.ProductFactory;
 import database.CustomerBasket;
+import database.ReadFiles;
+import database.WriteFiles;
 import products.*;
 import ui.OrderTakingMenu;
 import ui.PrintOutput;
@@ -11,19 +13,27 @@ public class OrderController {
     CustomerBasket customerBasket = new CustomerBasket();
     PrintOutput printOutput = new PrintOutput();
     ProductFactory productFactory = new ProductFactory();
+    WriteFiles writeFiles = new WriteFiles();
 
     public void addOrder() {
         int orderItem;
         Product newProduct;
-        do{
-           orderItem = orderTakingMenu.chooseAnItem(); // get item number from order
-           String productType = getProductName(orderItem); // get name of item form order item
-           newProduct = productFactory.createProduct(productType); // create new product
-           customerBasket.addOrderItemToBasket(newProduct); // add newly created product to the basket
-        } while (orderItem != 6); // number 6 mens, finish of adding item to basket
-        printOutput.showReceipt(); // so print the basket
-    }
+        while (true){
+            orderItem = orderTakingMenu.chooseAnItem(); // get item number from order
+            if (orderItem == 6) { // number 6 mens, finish of adding item to basket
+                outputHandle(); // call the output handle method to show , print and save receipt
+                break;
+            }
+            String productType = getProductName(orderItem); // get name of item form order item
+            newProduct = productFactory.createProduct(productType); // create new product
+            customerBasket.addOrderItemToBasket(newProduct); // add newly created product to the basket
+            }
+        }
 
+        private void outputHandle(){
+            printOutput.showReceipt(); // so print the basket
+            writeFiles.storeReceiptAsPdf(); // store file as pdf fiel
+        }
 
     private String getProductName(int orderItem){
         String productType = "";
