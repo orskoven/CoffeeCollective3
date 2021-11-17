@@ -14,7 +14,7 @@ public class Menu {
 
 
     public void welcomeUser(){
-        System.out.println("Hello and welcome. What would you like to order?");
+        System.out.println("Hello and welcome. What would you like to do?");
     }
 
     public int getTaskToDo(){
