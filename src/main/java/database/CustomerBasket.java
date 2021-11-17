@@ -11,10 +11,13 @@ public class CustomerBasket {
     private static ArrayList<String> receipt = new ArrayList<String>();
     private static ArrayList<Product> customerBasket= new ArrayList<Product>();
 
+    //adds item to the basket
     public void addOrderItemToBasket(Product item){
         customerBasket.add(item);
     }
 
+
+    //This adds up all items to the receipt
     public static ArrayList<String> getReceipt(){
         int totalPrice = 0;
         for (int i = 0; i < customerBasket.size(); i++) {
@@ -31,6 +34,7 @@ public class CustomerBasket {
 
     }
 
+    // this saves the reciept to a csv file
     public void saveReceipt(){
         Write write = new Write();
         Scanner scanner = new Scanner(System.in);

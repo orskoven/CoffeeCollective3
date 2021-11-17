@@ -7,7 +7,7 @@ public class ReadFiles {
 
     public void getProductPricesFromFile(){
 
-
+//this reads the prices from csv file
     try {
         File file = new File("resources/product.csv");
         Scanner productScanner = new Scanner(file);

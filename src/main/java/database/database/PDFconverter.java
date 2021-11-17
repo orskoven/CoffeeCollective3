@@ -19,6 +19,7 @@ public class PDFconverter {
     static String poems = "";
 
 
+    // this converts the saved csv file to pdf files
     public void getReceiptConverted() {
         System.out.print("Type your name to load receipts:");
         String usernameToLoad = scanner.next();
@@ -34,8 +35,9 @@ public class PDFconverter {
                     PdfWriter.getInstance(document, new FileOutputStream(randomizer(0,1000)+"Receipt.pdf"));
                     document.open();
                     Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+                    document.add( new Paragraph( "Name: " + stringLikeArray[0] ) );
                     document.add( new Paragraph( "Time: " + stringLikeArray[1] ) );
-                    for (int i = 1; i < stringLikeArray.length; i++) {
+                    for (int i = 2; i < stringLikeArray.length; i++) {
                         document.add( new Paragraph( "Items: " + stringLikeArray[i] ) );
                     }
 
