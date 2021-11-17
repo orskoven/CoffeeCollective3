@@ -35,7 +35,7 @@ public class PDFconverter {
                     document.open();
                     Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
                     document.add( new Paragraph( "Time: " + stringLikeArray[1] ) );
-                    for (int i = 0; i < stringLikeArray.length; i++) {
+                    for (int i = 1; i < stringLikeArray.length; i++) {
                         document.add( new Paragraph( "Items: " + stringLikeArray[i] ) );
                     }
 
