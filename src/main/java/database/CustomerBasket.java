@@ -1,10 +1,14 @@
 package database;
 
+import database.database.Write;
 import products.Product;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CustomerBasket {
+    private static ArrayList<String> receipt = new ArrayList<String>();
     private static ArrayList<Product> customerBasket= new ArrayList<Product>();
 
     public void addOrderItemToBasket(Product item){
@@ -12,7 +16,6 @@ public class CustomerBasket {
     }
 
     public static ArrayList<String> getReceipt(){
-        ArrayList<String> receipt = new ArrayList<>();
         int totalPrice = 0;
         for (int i = 0; i < customerBasket.size(); i++) {
             String productName = customerBasket.get(i).getTitle();
@@ -22,10 +25,18 @@ public class CustomerBasket {
             totalPrice += price;
         }
         String finalPrice = String.valueOf(totalPrice);
-        receipt.add(finalPrice);
+        receipt.add("Total " + finalPrice + "Dkk");
         customerBasket.clear();
         return receipt;
 
+    }
+
+    public void saveReceipt(){
+        Write write = new Write();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please type your name: ");
+        String username = scanner.nextLine();
+        write.writerToFile( username + ";" + new Timestamp(System.currentTimeMillis()) + ";" + receipt.toString());
     }
 
 }

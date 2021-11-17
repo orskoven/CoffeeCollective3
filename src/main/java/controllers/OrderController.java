@@ -3,7 +3,6 @@ package controllers;
 import ProductFactory.ProductFactory;
 import database.CustomerBasket;
 import database.ReadFiles;
-import database.WriteFiles;
 import products.*;
 import ui.OrderTakingMenu;
 import ui.PrintOutput;
@@ -13,7 +12,6 @@ public class OrderController {
     CustomerBasket customerBasket = new CustomerBasket();
     PrintOutput printOutput = new PrintOutput();
     ProductFactory productFactory = new ProductFactory();
-    WriteFiles writeFiles = new WriteFiles();
 
     public void addOrder() {
         int orderItem;
@@ -24,15 +22,15 @@ public class OrderController {
                 outputHandle(); // call the output handle method to show , print and save receipt
                 break;
             }
-            String productType = getProductName(orderItem); // get name of item form order item
+            String productType = getProductName(orderItem); // get name of item from order item
             newProduct = productFactory.createProduct(productType); // create new product
             customerBasket.addOrderItemToBasket(newProduct); // add newly created product to the basket
             }
         }
 
         private void outputHandle(){
-            printOutput.showReceipt(); // so print the basket
-            writeFiles.storeReceiptAsPdf(); // store file as pdf fiel
+            printOutput.showReceipt(); // prints the basket
+            customerBasket.saveReceipt(); // store file as pdf file
         }
 
     private String getProductName(int orderItem){

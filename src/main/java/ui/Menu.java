@@ -1,11 +1,12 @@
 package ui;
 
 import controllers.OrderController;
+import database.database.PDFconverter;
 
 import java.util.Scanner;
 
 public class Menu {
-
+    private PDFconverter pdFconverter = new PDFconverter();
     StatisticsMenu statisticsMenu = new StatisticsMenu();
     OrderController orderController = new OrderController();
     private Scanner sc = new Scanner(System.in);
@@ -25,6 +26,7 @@ public class Menu {
     private void printTaskOptions(){
         System.out.print("1. Add order, ");
         System.out.print("2. Statistics, ");
+        System.out.print("3. Get receipts as pdf, ");
         System.out.println("9. Quit");
     }
 
@@ -35,6 +37,9 @@ public class Menu {
                 break;
             case 2:
                 statisticsMenu.printStatisticsChoice();
+                break;
+            case 3:
+                pdFconverter.getReceiptConverted();
                 break;
             default:break;
         }
